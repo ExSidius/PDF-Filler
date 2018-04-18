@@ -23,7 +23,6 @@ args = parser.parse_args()
 TEMPLATE_PATH = args.template
 INPUT_CSV_PATH = args.input
 
-fields = []
 #Define CSV columns/ Form Fields from json file
 json_file = args.form_fields
 
@@ -40,10 +39,8 @@ if __name__ == '__main__':
     with open(json_file, 'r') as f:
         data = json.load(f)
 
-    for i in data['fields']:
-       fields.append(i)
 
-    num_files = tools.write_pdfs(INPUT_CSV_PATH,TEMPLATE_PATH, fields, out_dir)
+    num_files = tools.write_pdfs(INPUT_CSV_PATH,TEMPLATE_PATH, data['fields'], out_dir)
 
     # Print the number of pdfs filled and the time it took
     print("---{} PDF files took {} seconds---".format(num_files, (time.time()-start_time)))
