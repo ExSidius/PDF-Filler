@@ -22,4 +22,4 @@ Run the script using this format:
   
 ### 
 ### Acknowledgments
-The write_fillable_pdf function in the pdftools module was adopted from an unknown users work. Thank you to them!
+The write_fillable_pdf function in the pdftools module was adopted from an unknown user's work. Thank you to them!
