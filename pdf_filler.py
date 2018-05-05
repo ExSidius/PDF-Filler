@@ -1,11 +1,9 @@
-#!/usr/bin/python
-
 import time
 from pdftools import tools
 import os
-import argparse
 import json
 import pandas as pd
+import datetime
 
 # Helper functions
 
@@ -51,20 +49,12 @@ def generate_input():
 #   - Template pdf to fill
 #   - JSON file containing form field names
 #   - Input file as a csv (col 1 = field 1, col 2 = field 2 separated by commas)
-#   - Output directory name 
+#   - Output directory name
 
-parser = argparse.ArgumentParser(description="Fill PDF forms")
-parser.add_argument('template')
-parser.add_argument('form_fields')
-parser.add_argument('output')
-
-args = parser.parse_args()
-
-TEMPLATE_PATH = args.template
+TEMPLATE_PATH = './seedcert.pdf'
 INPUT_CSV_PATH = './temp.csv'
-
-#Define CSV columns/ Form Fields from json file
-json_file = args.form_fields
+OUT_DIR = 'seed_' + str(datetime.datetime.today())
+JSON_FILE = './form_fields.json'
 
 if __name__ == '__main__':
 
@@ -72,17 +62,16 @@ if __name__ == '__main__':
 
     start_time = time.time()
 
-    # If target directory doesn't exist, make one
-    out_dir = args.output
-    if not os.path.exists(out_dir):
-        os.makedirs(out_dir)
+
+    if not os.path.exists(OUT_DIR):
+        os.makedirs(OUT_DIR)
 
     # Load json fields
-    with open(json_file, 'r') as f:
+    with open(JSON_FILE, 'r') as f:
         data = json.load(f)
 
 
-    num_files = tools.write_pdfs(INPUT_CSV_PATH,TEMPLATE_PATH, data['fields'], out_dir)
+    num_files = tools.write_pdfs(INPUT_CSV_PATH,TEMPLATE_PATH, data['fields'], OUT_DIR)
 
     # Print the number of pdfs filled and the time it took
     print("---{} PDF files took {} seconds---".format(num_files, (time.time()-start_time)))
