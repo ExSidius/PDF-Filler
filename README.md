@@ -13,12 +13,13 @@ Clone (or download the zip) this repo to use.
 
 Run the script using this format:
 ```
-./pdf_filler PDF_TO_FILL JSON_FORM_FIELDS INPUT_CSV OUTPUT_DIRECTORY_NAME
+./pdf_filler PDF_TO_FILL JSON_FORM_FIELDS OUTPUT_DIRECTORY_NAME
 ```
 
 ### Prerequisites
   - Python 3.6+
   - pdfrw ```pip install pdfrw```
+  - pandas ```pip install pandas```
   
 ### 
 ### Acknowledgments
