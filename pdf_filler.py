@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 import time
 from pdftools import tools
 import os
@@ -43,9 +44,7 @@ def generate_input():
 
     df_new = df_new[['Name', 'Course', 'Status (%)']]
 
-    df_new.to_csv('input.csv')
-
-    print(df_new)
+    df_new.to_csv('temp.csv')
 
 # Parse arguments
 # REQUIRED ARGUMENTS
@@ -62,7 +61,7 @@ parser.add_argument('output')
 args = parser.parse_args()
 
 TEMPLATE_PATH = args.template
-INPUT_CSV_PATH = './input.csv'
+INPUT_CSV_PATH = './temp.csv'
 
 #Define CSV columns/ Form Fields from json file
 json_file = args.form_fields
@@ -88,5 +87,5 @@ if __name__ == '__main__':
     # Print the number of pdfs filled and the time it took
     print("---{} PDF files took {} seconds---".format(num_files, (time.time()-start_time)))
 
-    os.remove('input.csv')
+    os.remove('temp.csv')
 

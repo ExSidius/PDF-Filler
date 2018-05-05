@@ -16,6 +16,11 @@ Run the script using this format:
 ./pdf_filler PDF_TO_FILL JSON_FORM_FIELDS OUTPUT_DIRECTORY_NAME
 ```
 
+Example:
+```
+./pdf_filler.py seedcert.pdf form_fields.json seed_dummy
+```
+
 ### Prerequisites
   - Python 3.6+
   - pdfrw ```pip install pdfrw```
